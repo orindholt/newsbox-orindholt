@@ -14,36 +14,33 @@
         <nav class="Nav p-3 bb-1-ice">
             <ul class="Nav__list">
                 <li><a href="index.html"><i class="fas fa-inbox fs-l"></i></a></li>
-                <li><h1>Newsbox</h1></li>
+                <li><h1 class="Nav__header">Newsbox</h1></li>
                 <li><a href="settings.html"><i class="fas fa-cog fs-l"></i></a></li>
             </ul>
         </nav>
         <form class="d-f ai-center of-hidden jc-space-between bg-ice br m-2 p-2 mt-3 mb-3" action="index.html?">
-            <input class="bg-transparent text-slate" type="text" name="search" id="search" placeholder="Search news">
+            <input class="bg-transparent text-slate w-100" type="text" name="search" id="search" placeholder="Search news">
             <button type="submit"><i class="fas fa-search text-fossil"></i></button>
         </form>
     </header>
     <main class="Main" id="main">
        <!--  <section class="Section">
-            <div class="d-f gap-3 p-2 bb-1-ice bt-1-ice">
+            <div class="d-f gap-3 p-2 bb-1-ice bt-1-ice ai-center">
                 <div class="Section__icon br-full d-f jc-center ai-center">
                     <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
                 </div>
-                <h2 class="Section__header fs-l">health</h2>
-                <button class="ml-auto show-hide"><i class="fas fa-chevron-right fs-l"></i></button>
+                <h2 class="Section__header">${category}</h2>
+                <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <article class="Card bb-1-ice">
+            <div class="Card__container hide-animation"></div>
+           <article class="Card">
                 <button class="Card__btn bg-sage"><i class="fas fa-inbox fs-l text-snow"></i></button>
                 <div class="Card__text bg-snow p-2">
-                    <h3>Headline</h3>
-                    <p>Surfing is a surface water sport in which the wave rider, referred to as...</p>
-                </div>
-            </article>
-            <article class="Card bb-1-ice">
-                <button class="Card__btn bg-sage"><i class="fas fa-inbox fs-l text-snow"></i></button>
-                <div class="Card__text bg-snow p-2">
-                    <h3>Headline</h3>
-                    <p>Surfing is a surface water sport in which the wave rider, referred to as...</p>
+                    <img src="${article.multimedia[0].url}" class="Card__img">
+                    <div>
+                        <h3 class="Card__title">${article.title}</h3>
+                        <p class="Card__abstract">${shortenStr(article.abstract, 60)}...</p>
+                    </div>
                 </div>
             </article>
         </section> -->
