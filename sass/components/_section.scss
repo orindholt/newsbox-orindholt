@@ -1,7 +1,7 @@
 .Section {
     &__header {
         text-transform: uppercase;
-        @extend %card-title;
+        @extend %section-header;
     }
     &__icon {
         width: 30px;
