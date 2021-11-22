@@ -1,42 +1,41 @@
+const cardStorage = localStorage["cards"] ? JSON.parse(localStorage["cards"] ) : [];
+
 document.querySelector(".Main").addEventListener("touchstart", (e)=>{
     let touchElement = e.target.parentElement;
-    let parentElement = touchElement.closest(".Card");
-    if(e.target.parentElement.classList.contains("Card__text")){
+    let parentElement = e.target.closest(".Card");
+    if(touchElement.classList.contains("Card__text") || 
+    touchElement.parentElement.classList.contains("Card__text")){
+        touchElement = e.target.closest(".Card__text")
         let touchCordStart = Math.floor(e.touches[0].clientX);
         let touchCordMove;
         let delBtn = parentElement.querySelector(".Card__btn");
         let btnWidth = delBtn.offsetWidth;
 
-        if(touchElement.classList.contains("Card__text")){
-            // touch move
-            touchElement.addEventListener("touchmove", (e) => {
-                touchCordMove = Math.floor(e.touches[0].clientX);
-                // move functionality 
-                if(touchCordMove < touchCordStart 
-                && touchCordMove > touchCordStart-btnWidth){
-                    touchElement.style.transform = `translateX(${touchCordMove-touchCordStart}px)`;
-                }
-            });
+        // touch move
+        touchElement.addEventListener("touchmove", (e) => {
+            touchCordMove = Math.floor(e.touches[0].clientX);
+            // move functionality 
+            if(touchCordMove < touchCordStart 
+            && touchCordMove > touchCordStart-btnWidth){
+                touchElement.style.transform = `translateX(${touchCordMove-touchCordStart}px)`;
+            }
+        });
 
-            // touch end
-            touchElement.addEventListener("touchend", (e) => {
-                if(touchCordMove < touchCordStart-(btnWidth / 3)){
-                    // snap to child
-                    touchElement.style.transform = `translateX(-${btnWidth}px)`;
-                } else {
-                    // snap to 0
-                    touchElement.style.transform = "translateX(0px)";
-                }
-            });
-        }
+        // touch end
+        touchElement.addEventListener("touchend", () => {
+            if(touchCordMove < touchCordStart-(btnWidth / 3)){
+                // snap to child
+                touchElement.style.transform = `translateX(-${btnWidth}px)`;
+            } else {
+                // snap to 0
+                touchElement.style.transform = "translateX(0px)";
+            }
+        });
         //del btn onclick
         delBtn.onclick = () => {
             delBtn.disabled = true;
-            let userObj = {
-                id: parentElement.getAttribute("data-number"),
-                name: parentElement.querySelector(".Card__text").textContent
-            }
-            localStorage[`${userObj.id}`] = JSON.stringify(userObj);
+            cardStorage.push(parentElement.getAttribute("data-id"));
+            localStorage["cards"] = JSON.stringify(cardStorage);
             parentElement.classList.add("del-animation");
             parentElement.style.pointerEvents = "none";
             setTimeout(()=>{
@@ -50,24 +49,16 @@ document.querySelector(".Main").addEventListener("touchstart", (e)=>{
             if(e.target.style.transform != "rotate(90deg)"){
                 e.target.style.transform = "rotate(90deg)";
                 parentElement.querySelectorAll(".Card").forEach(element => {
-                    element.classList.add("hide-animation");
-                    element.style.pointerEvents = "none";
+                    element.classList.remove("hide-animation");
+                    element.style.pointerEvents = "auto";
                 });
             } else {
                 e.target.style.transform = "rotate(0deg)";
                 parentElement.querySelectorAll(".Card").forEach(element => {
-                element.classList.remove("hide-animation");
-                element.style.pointerEvents = "auto";
+                    element.classList.add("hide-animation");
+                    element.style.pointerEvents = "none";
                 });
             }
         };
-        timePointerEvents(e.target, 1200);
     }
 });
-
-function timePointerEvents(element, time){
-    element.style.pointerEvents = "none";
-    setTimeout(()=>{
-        element.style.pointerEvents = "auto"; 
-    }, time);
-}
