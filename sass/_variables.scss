@@ -19,8 +19,26 @@ $colors: (
     "black": #000000
 );
 
-$font-primary: "europa";
-$font-secondary: "rift-soft";
+
+:root {
+    @each $key, $val in $colors {
+        --#{$key}: #{$val};
+    }
+}
+
+.dark-theme {
+    @each $key, $val in $colors {
+        --#{$key}: #{darken($val, 20%)};
+    }
+}
+
+$font-primary: europa;
+$font-secondary: rift-soft;
+
+$fonts: (
+    $font-primary,
+    $font-secondary
+);
 
 %font-primary {font-family: $font-primary, sans-serif;}
 %font-secondary {font-family: $font-secondary, sans-serif;}
@@ -44,7 +62,7 @@ $font-secondary: "rift-soft";
 }
 
 %sub-title {
-    @extend %font-primary;
+    @extend %font-secondary;
     font-size: $font-size-base + 3px;
     font-weight: 400;
 }

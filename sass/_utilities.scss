@@ -1,3 +1,4 @@
+// color generation for text and background
 @each $key, $val in $colors {
     .text-#{$key}{
         color: $val;
@@ -24,6 +25,21 @@
     }
 }
 
+// fonts generation
+@each $font in $fonts {
+    .font-#{$font}{
+        font-family: $font, sans-serif;
+    }
+}
+
+
+@for $i from 1 through 100 {
+    .z-index-#{$i}{
+        z-index: $i;
+    }
+}
+
+// more utilities
 $utilities: (
     "padding": (
         "prefix": "p",
@@ -199,6 +215,8 @@ $utilities: (
             "2": $border-radius-base * 2,
             "3": $border-radius-base * 3,
             "4": $border-radius-base * 3.5,
+            "5": $border-radius-base * 4,
+            "6": $border-radius-base * 4.5,
             "full": 50%
         )
     ),
@@ -212,8 +230,31 @@ $utilities: (
             "center": center
         )
     ),
+    "align-self": (
+        "prefix": "as",
+        "values": (
+            "start": start,
+            "end": end,
+            "flex-start": flex-start,
+            "flex-end": flex-end,
+            "center": center
+        )
+    ),
     "justify-content": (
         "prefix": "jc",
+        "values": (
+            "start": start,
+            "end": end,
+            "flex-start": flex-start,
+            "flex-end": flex-end,
+            "center": center,
+            "space-between": space-between,
+            "space-around": space-around,
+            "space-evenly": space-evenly
+        )
+    ),
+    "justify-self": (
+        "prefix": "js",
         "values": (
             "start": start,
             "end": end,
@@ -259,6 +300,47 @@ $utilities: (
             "80": 80%,
             "90": 90%,
             "100": 100%
+        )
+    ),
+    "height": (
+        "prefix": "h",
+        "values": (
+            "auto": auto,
+            "10": 10%,
+            "20": 20%,
+            "30": 30%,
+            "40": 40%,
+            "50": 50%,
+            "60": 60%,
+            "70": 70%,
+            "80": 80%,
+            "90": 90%,
+            "100": 100%
+        )
+    ),
+    "text-transform": (
+        "prefix": "tt",
+        "values": (
+            "uppercase": uppercase,
+            "lowercase": lowercase,
+            "capitalize": capitalize,
+        )
+    ),
+    "text-align": (
+        "prefix": "ta",
+        "values": (
+            "center": center,
+            "left": left,
+            "right": right,
+        )
+    ),
+    "flex-direction": (
+        "prefix": "fd",
+        "values": (
+            "c": column,
+            "cr": column-reverse,
+            "r": row,
+            "rr": row-reverse,
         )
     )
 );

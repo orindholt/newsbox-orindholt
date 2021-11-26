@@ -1,4 +1,8 @@
 .Body {
     @extend %font-primary;
-    color: map-get($colors, "drab");
+    color: var(--drab);
+}
+
+.Body_settings {
+    min-height: 100vh;
 }
