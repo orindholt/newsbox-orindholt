@@ -1,3 +1,7 @@
+if(localStorage["darkmode"] == "on"){
+    document.querySelector("body").classList.add("dark-theme");
+}
+
 let cardStorage = localStorage["cards"] ? JSON.parse(localStorage["cards"]) : [];
 const key = "CsZGAx8GwP1dlmWuflb94puYcOmdpaXP";
 
@@ -36,7 +40,7 @@ categories.forEach(category => {
     section.classList.add("Section");
     document.querySelector("#main").append(section);
     section.innerHTML += `
-    <div class="d-f gap-3 p-2 bb-1-ice bt-1-ice ai-center">
+    <div class="d-f gap-3 p-2  bt-1-ice ai-center">
         <div class="Section__icon br-full d-f jc-center ai-center">
             <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
         </div>
@@ -54,8 +58,8 @@ categories.forEach(category => {
                 cardContainer.innerHTML += `
                 <article class="Card" id="${article.short_url}"
                 data-section="${section.querySelector(".Section__header").textContent}">
-                    <button class="Card__btn bg-danger"><i class="fas fa-trash fs-l text-snow"></i></button>
-                    <div class="Card__text bg-snow p-2">
+                    <button class="Card__btn Card__btn_delete"><i class="fas fa-trash fs-l Card__icon"></i></button>
+                    <div class="Card__text  p-2">
                         <img src="${article.multimedia[0].url}" class="Card__img">
                         <div>
                             <h3 class="Card__title">${article.title}</h3>
@@ -121,6 +125,14 @@ document.querySelector(".Main").addEventListener("touchstart", (e)=>{
                 document.querySelector("#main").innerHTML =
                 `<p class="ta-center">Sorry, nothing here..</p>`
             } 
+            Toastify({
+                className: "Toast_delete",
+                text: `'${shortenStr(parentElement.querySelector(".Card__title").textContent, 20)}...' was removed from archived.`,
+                duration: 3000,
+                stopOnFocus: false,
+                gravity: "top",
+                position: "right"
+            }).showToast();
             parentElement.classList.add("del-animation");
             parentElement.style.pointerEvents = "none";
             let container = parentElement.closest(".Card__container");

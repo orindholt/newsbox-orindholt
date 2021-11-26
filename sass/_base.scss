@@ -1,8 +1,31 @@
 .Body {
     @extend %font-primary;
     color: var(--drab);
+    background-color: var(--snow);
 }
 
 .Body_settings {
     min-height: 100vh;
+    background-color: var(--ice);
+    .Main__header {
+        span {
+            color: var(--sage);
+        }
+    }
+}
+
+/*Toastify class*/
+%Toast {
+    font-size: $font-size-base;
+    color: var(--snow) !important;
+    max-width: 50% !important;
+}
+
+.Toast_save {
+    @extend %Toast;
+    background: var(--sage) !important;
+}
+.Toast_delete {
+    @extend %Toast;
+    background: var(--danger) !important;
 }

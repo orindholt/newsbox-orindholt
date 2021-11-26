@@ -27,9 +27,14 @@ $colors: (
 }
 
 .dark-theme {
-    @each $key, $val in $colors {
-        --#{$key}: #{darken($val, 20%)};
-    }
+    --sage: #{darken(map-get($colors, "sage"), 10%)};
+    --danger: #{darken(map-get($colors, "danger"), 10%)};
+    --snow: #{map-get($colors, "onyx")};
+    --ice: #{lighten(map-get($colors, "onyx"), 10%)};
+    --fossil: #{map-get($colors, "black")};
+    --black: #{map-get($colors, "snow")};
+    --drab: #{map-get($colors, "ice")};
+
 }
 
 $font-primary: europa;

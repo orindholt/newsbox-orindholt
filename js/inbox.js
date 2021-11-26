@@ -1,4 +1,13 @@
 let cardStorage = localStorage["cards"] ? JSON.parse(localStorage["cards"] ) : [];
+
+// if dark mode
+if(localStorage["darkmode"] == "on") document.querySelector("body").classList.add("dark-theme");
+
+// sets visual number of cards in localstorage
+if(localStorage["cards"]){
+    document.querySelector(".Nav__inbox").setAttribute("data-text", cardStorage.length);
+} else document.querySelector(".Nav__inbox").setAttribute("data-text", "0");
+
 const key = "CsZGAx8GwP1dlmWuflb94puYcOmdpaXP";
 const categories = ["world", "health", "sports", "business",  "travel"];
 
@@ -22,7 +31,7 @@ categories.forEach(category => {
         section.classList.add("Section");
         document.querySelector("#main").append(section);
         section.innerHTML += `
-        <div class="d-f gap-3 p-2 bb-1-ice bt-1-ice ai-center">
+        <div class="d-f gap-3 p-2 ai-center">
             <div class="Section__icon br-full d-f jc-center ai-center">
                 <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
             </div>
@@ -42,8 +51,8 @@ categories.forEach(category => {
                     cardContainer.innerHTML += `
                     <article class="Card" id="${article.short_url}"
                     data-section="${section.querySelector(".Section__header").textContent}">
-                        <button class="Card__btn bg-sage"><i class="fas fa-inbox fs-l text-snow"></i></button>
-                        <div class="Card__text bg-snow p-2">
+                        <button class="Card__btn Card__btn_inbox"><i class="fas fa-inbox Card__icon fs-l"></i></button>
+                        <div class="Card__text p-2">
                             <img src="${article.multimedia[0].url}" class="Card__img">
                             <div>
                                 <h3 class="Card__title">${article.title}</h3>
@@ -109,6 +118,15 @@ document.querySelector(".Main").addEventListener("touchstart", (e)=>{
             }
             cardStorage.push(userObj);
             localStorage["cards"] = JSON.stringify(cardStorage);
+            document.querySelector(".Nav__inbox").setAttribute("data-text", cardStorage.length);
+            Toastify({
+                className: "Toast_save",
+                text: `'${shortenStr(parentElement.querySelector(".Card__title").textContent, 20)}...' was archived.`,
+                duration: 3000,
+                stopOnFocus: false,
+                gravity: "top",
+                position: "right"
+            }).showToast();
             parentElement.classList.add("del-animation");
             parentElement.style.pointerEvents = "none";
             let container = parentElement.closest(".Card__container");
