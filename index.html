@@ -13,7 +13,7 @@
     <header>
         <nav class="Nav p-3 bb-1-ice">
             <ul class="Nav__list">
-                <li><a href="index.html"><i class="fas fa-inbox fs-l"></i></a></li>
+                <li><a href="archive.html"><i class="fas fa-inbox fs-l"></i></a></li>
                 <li><h1 class="Nav__header">Newsbox</h1></li>
                 <li><a href="settings.html"><i class="fas fa-cog fs-l"></i></a></li>
             </ul>
@@ -33,20 +33,21 @@
                 <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="Card__container hide-animation"></div>
-           <article class="Card">
+            <article class="Card" data-id="${article.short_url}"
+            data-section="${section.querySelector(".Section__header").textContent}">
                 <button class="Card__btn bg-sage"><i class="fas fa-inbox fs-l text-snow"></i></button>
                 <div class="Card__text bg-snow p-2">
                     <img src="${article.multimedia[0].url}" class="Card__img">
                     <div>
                         <h3 class="Card__title">${article.title}</h3>
-                        <p class="Card__abstract">${shortenStr(article.abstract, 60)}...</p>
+                        <p class="Card__abstract">${shortenStr(article.abstract, 30)}...</p>
                     </div>
                 </div>
             </article>
         </section> -->
     </main>
-    <!-- <div class="del-animation hide-animation"></div> loads css class -->
+    <!-- <div class="del-animation hide-animation show-animation"></div> loads css class -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <!--axios-->
-    <script src="./dist/index.min.js"></script>
+    <script src="./dist/inbox.min.js"></script>
 </body>
 </html>
