@@ -4,6 +4,7 @@ const purgecss = require('gulp-purgecss');
 const babel = require("gulp-babel");
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
+const rename = require('gulp-rename');
 
 function buildStyles() {
   return src('sass/**/*.scss')
@@ -16,7 +17,10 @@ function buildScript() {
   return src('js/**/*.js')
     .pipe(babel())
     .pipe(uglify())
-    .pipe(concat('index.min.js'))
+    .pipe(rename((path)=>{
+      path.basename += ".min";
+    }))
+    /* .pipe(concat('index.min.js')) */
     .pipe(dest('dist'))
 }
 
