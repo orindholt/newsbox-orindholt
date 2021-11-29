@@ -38,9 +38,6 @@ $cardHeight: 100px;
         &__abstract {
             @extend %card-copy;
         }
-        &__icon {
-            color: var(--snow);
-        }
     }
 }
 
