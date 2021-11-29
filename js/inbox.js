@@ -36,7 +36,7 @@ categories.forEach(category => {
                 <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
             </div>
             <h2 class="Section__header">${category}</h2>
-            <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-down"></i></button>
+            <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-down Section__chevron"></i></button>
         </div>`;
         let containerHeight = 0;
         let cardContainer = document.createElement("div");
@@ -51,7 +51,7 @@ categories.forEach(category => {
                     cardContainer.innerHTML += `
                     <article class="Card" id="${article.short_url}"
                     data-section="${section.querySelector(".Section__header").textContent}">
-                        <button class="Card__btn Card__btn_inbox"><i class="fas fa-inbox Card__icon fs-l"></i></button>
+                        <button class="Card__btn Card__btn_inbox"><i class="fas fa-inbox fs-l text-snow"></i></button>
                         <div class="Card__text p-2">
                             <img src="${article.multimedia[0].url}" class="Card__img">
                             <div>

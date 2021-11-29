@@ -7,11 +7,11 @@ const key = "CsZGAx8GwP1dlmWuflb94puYcOmdpaXP";
 
 const sections = [];
 cardStorage.forEach(card => sections.push(card.section));
-const categories = shortenArr(sections);
 
 const idArray = [];
 cardStorage.forEach(card => idArray.push(card.id));
 
+const categories = shortenArr(sections);
 const ax = (category) => {
     let req = `https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=${key}`;
     return axios(req, {mode: "cors"}).then(res => res.data.results);
@@ -45,7 +45,7 @@ categories.forEach(category => {
             <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
         </div>
         <h2 class="Section__header">${category}</h2>
-        <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-down"></i></button>
+        <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-down Section__chevron"></i></button>
     </div>`;
     let containerHeight = 0;
     let cardContainer = document.createElement("div");
@@ -58,7 +58,7 @@ categories.forEach(category => {
                 cardContainer.innerHTML += `
                 <article class="Card" id="${article.short_url}"
                 data-section="${section.querySelector(".Section__header").textContent}">
-                    <button class="Card__btn Card__btn_delete"><i class="fas fa-trash fs-l Card__icon"></i></button>
+                    <button class="Card__btn Card__btn_delete"><i class="fas fa-trash fs-l text-snow"></i></button>
                     <div class="Card__text  p-2">
                         <img src="${article.multimedia[0].url}" class="Card__img">
                         <div>
@@ -69,6 +69,9 @@ categories.forEach(category => {
                 </article>`;
                 containerHeight += 100;
                 cardContainer.style.maxHeight = `${containerHeight}px`;
+            } else {
+                cardStorage = cardStorage.filter(card => article.short_url != card.id);
+                localStorage.setItem("cards", JSON.stringify(cardStorage));
             }
         }); 
     }).catch(error => {
