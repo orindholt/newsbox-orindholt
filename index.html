@@ -16,7 +16,7 @@
             <ul class="Nav__list">
                 <li class="Nav__inbox"><a href="archive.html"><i class="fas fa-inbox fs-l"></i></a></li>
                 <li><h1 class="Nav__header">Newsbox</h1></li>
-                <li><a href="settings.html"><i class="fas fa-cog fs-l"></i></a></li>
+                <li class="Nav__settings"><a href="settings.html"><i class="fas fa-cog fs-l"></i></a></li>
             </ul>
         </nav>
         <form class="d-f ai-center of-hidden jc-space-between  br m-2 p-2 mt-3 mb-3 Nav__search" action="index.html?">
@@ -31,7 +31,7 @@
                     <img src="./assets/icn_surfing.svg" alt="Header Icon" class="w-auto">
                 </div>
                 <h2 class="Section__header">${category}</h2>
-                <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-right"></i></button>
+                <button class="ml-auto Section__btn show-hide"><i class="fas fa-chevron-right Section__chevron"></i></button>
             </div>
             <div class="Card__container hide-animation"></div>
             <article class="Card" data-id="${article.short_url}"
@@ -47,10 +47,11 @@
             </article>
         </section> -->
     </main>
-    <!-- <div class="del-animation hide-animation show-animation dark-theme Toast_save"></div> loads css class -->
+    <!-- <div class="del-animation hide-animation show-animation dark-theme Toast_save Tutorial Tutorial_highlighted Tutorial__skip-btn Tutorial__triangle LightBox"></div> loads css class -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> <!--Toastify-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <!--axios-->
     <script src="./dist/inbox.min.js"></script>
     <script src="./dist/search.min.js"></script>
+    <script src="./dist/tutorial.min.js"></script>
 </body>
 </html>
