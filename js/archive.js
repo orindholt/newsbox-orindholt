@@ -134,7 +134,7 @@ document.querySelector(".Main").addEventListener("touchstart", (e)=>{
                 duration: 3000,
                 stopOnFocus: false,
                 gravity: "top",
-                position: "right"
+                position: "center"
             }).showToast();
             parentElement.classList.add("del-animation");
             parentElement.style.pointerEvents = "none";
