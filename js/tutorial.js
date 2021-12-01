@@ -104,7 +104,7 @@ if(!localStorage["tutorial"]){
         skipBtn.textContent = "Skip";
         bodyNode.append(skipBtn);
 
-        skipBtn.addEventListener("click", (e)=>{
+        skipBtn.addEventListener("click", ()=>{
             endTutorial();
         });
     
