@@ -22,18 +22,17 @@ bodyElement.addEventListener("touchstart", (e) => {
     touchStart = Math.floor(e.touches[0].clientY); 
     rotateAmount = 0;
     opacityAmount = 0;
-});
+}, {passive: true});
 
 bodyElement.addEventListener("touchmove", (e) => {
     touchMove = Math.floor(e.touches[0].clientY);
-    if(touchMove>touchStart){
+    if(touchMove>touchStart && rootElement.scrollTop == 0){
         bodyElement.style.overflow = "hidden";
         interval = (touchMove-touchStart)-arrowHeight*2;
+        console.log("interval: "+interval);
         rotateAmount += 1.5;
         if(opacityAmount < 1) parseFloat((opacityAmount += 0.01).toFixed(3));
-        if(rootElement.scrollTop == 0
-            && interval < maxScroll
-            && interval > -(maxScroll*3)){
+        if(interval < maxScroll && interval > -(maxScroll*3)){
             arrowContainer.style.top = `${interval}px`;  
             arrowElement.style.opacity = `${opacityAmount}`;
             arrowContainer.style.transform = `rotate(${rotateAmount}deg)`;
@@ -41,9 +40,11 @@ bodyElement.addEventListener("touchmove", (e) => {
     } else {
         bodyElement.style.removeProperty("overflow");
     }
-});
+}, {passive: true});
 
 bodyElement.addEventListener("touchend", (e) => {
+    console.log("int END: "+interval);
+    console.log(maxScroll);
     if(interval >= maxScroll){
         arrowElement.style.opacity = "1";
         arrowContainer.classList.add("rotate-animation");
@@ -54,5 +55,5 @@ bodyElement.addEventListener("touchend", (e) => {
         arrowContainer.removeAttribute("style");
         arrowElement.removeAttribute("style");
     }
-});
+}, {passive: true});
     
