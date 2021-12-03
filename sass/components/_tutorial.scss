@@ -6,8 +6,6 @@
     }
 }
 
-@debug colorAnimation(border-bottom-color, map-get($colors, "rust"));
-
 @include colorAnimation(background-color, map-get($colors, "rust"));
 @include colorAnimation(border-bottom-color, map-get($colors, "rust"));
 
