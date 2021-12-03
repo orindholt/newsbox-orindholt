@@ -38,6 +38,8 @@ bodyElement.addEventListener("touchmove", (e) => {
             arrowElement.style.opacity = `${opacityAmount}`;
             arrowContainer.style.transform = `rotate(${rotateAmount}deg)`;
         }
+    } else {
+        bodyElement.style.removeProperty("overflow");
     }
 });
 
@@ -49,7 +51,6 @@ bodyElement.addEventListener("touchend", (e) => {
             window.location.reload();
         }, 1000);
     } else {
-        bodyElement.style.removeProperty("overflow");
         arrowContainer.removeAttribute("style");
         arrowElement.removeAttribute("style");
     }
