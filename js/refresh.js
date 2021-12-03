@@ -29,7 +29,6 @@ bodyElement.addEventListener("touchmove", (e) => {
     if(touchMove>touchStart && rootElement.scrollTop == 0){
         bodyElement.style.overflow = "hidden";
         interval = (touchMove-touchStart)-arrowHeight*2;
-        console.log("interval: "+interval);
         rotateAmount += 1.5;
         if(opacityAmount < 1) parseFloat((opacityAmount += 0.01).toFixed(3));
         if(interval < maxScroll && interval > -(maxScroll*3)){
@@ -43,8 +42,6 @@ bodyElement.addEventListener("touchmove", (e) => {
 }, {passive: true});
 
 bodyElement.addEventListener("touchend", (e) => {
-    console.log("int END: "+interval);
-    console.log(maxScroll);
     if(interval >= maxScroll){
         arrowElement.style.opacity = "1";
         arrowContainer.classList.add("rotate-animation");
