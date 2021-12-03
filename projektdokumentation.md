@@ -73,7 +73,8 @@ Axios er en promise-based HTTP client, som bliver brugt til at fetche data fra e
 ---
 ### Vurdering af egen indsats & gennemførelse af opgaveforløbet (Arbejdsgangen)
 
-Min kæle-skildpadde havde det heldigvis rigtigt godt i denne praktikperiode. Så jeg synes jeg klarede det rimeligt. Jeg nåede i mål med det jeg sat mig for. Og synes generelt jeg fik et godt resultat.
+Min kæle-skildpadde havde det heldigvis rigtigt godt i denne praktikperiode. Så jeg synes jeg klarede det rimeligt. Jeg nåede i mål med det meste jeg sat mig for. Jeg kom dog ikke 100% i mål med refresh funktionaliteten. Men jeg synes generelt jeg fik et godt resultat.
+
 
 ---
 ### En beskrivelse af særlige punkter til bedømmelse
