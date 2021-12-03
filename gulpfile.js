@@ -3,7 +3,6 @@ const sass = require('gulp-sass')(require('sass'));
 const purgecss = require('gulp-purgecss');
 const babel = require("gulp-babel");
 const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 
 function buildStyles() {
@@ -15,7 +14,9 @@ function buildStyles() {
 
 function buildScript() {
   return src('js/**/*.js')
-    .pipe(babel())
+    .pipe(babel({
+      presets: ["@babel/preset-env"],
+    }))
     .pipe(uglify())
     .pipe(rename((path)=>{
       path.basename += ".min";
