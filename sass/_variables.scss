@@ -49,14 +49,12 @@ $fonts: (
 
 %primary-heading {
     @extend %font-primary;
-    font-size: $font-size-base + 16px;
+    font-size: $font-size-base + 9px;
     font-weight: 700;
 }
 
 %secondary-heading {
-    @extend %font-primary;
-    font-size: $font-size-base + 9px;
-    font-weight: 700;
+    @extend %primary-heading;
 }
 
 %section-header {
